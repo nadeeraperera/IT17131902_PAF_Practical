@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>GadgetBudget</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/FrontEnd/Controllers/researcherControllers/myProjects.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+    
+  .carousel-inner img {
+      width: 100%; /* Set width to 100% */
+      margin: auto;
+      min-height:200px;
+  }
+
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; 
+    }
+  }
+  .checked {
+  color: orange;
+	}
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="myProjects.html">My Projects</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<br/><br/>
+	<div class="row">
+	<div class="center-block">
+  	<div class="form-group" style="text-align: center;">
+         <input type="text" class="form-control" id="lname" name="lname" placeholder="Search" style="width: 600px;margin-left: auto;margin-right: auto;">
+     </div>
+     <div class="form-group" style="text-align: center;">
+     	<input type="Button"  value="Search"/>
+     </div>
+     </div>
+     </div>
+<div class="container text-center">    
+
+  <div class='col-sm-6'>
+  	
+  		<h3>Upload New Project</h3>
+  		<br/>
+		<a type="button" class="btn btn-secondary" data-toggle='modal' data-target='#addModal'><i class="fa fa-plus fa-5x" aria-hidden="true"></i></a>
+  </div>
+  <div class='col-sm-6'>
+  	<h3>Request Approval For New Project</h3>
+  	<br/>
+  	<a href="#" type="button" class="btn btn-primary" style="padding: 30px;font-size: 20px" data-toggle='modal' data-target='#requestModal'>Request</a>
+  </div>
+  <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+  <h3><u>My Projects</u></h3><br>
+  <div class="row" id="myProjects">
+ 	
+  </div>
+   <div class="row collapse" id="myProjectsCollapse">
+                     
+   </div>
+    <div class="col-md-12">
+           <button class="read-more" data-toggle="collapse" data-target="#myProjectsCollapse"  id="myProjectsCollapseBtn" onclick="showMoreLess(this.id)">See More</button>
+    </div>
+  
+</div><br>
+
+<!-- view modal -->
+<div class="modal fade" id="requestModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" style="text-align: center;">Request Approval
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </h3>
+       
+      </div>
+       <form id="requestForm">
+      <div class="modal-body">
+        <div class="container">
+		    <div class="row">
+		          <div class="col-sm-6">
+				    
+				     <div class="form-group">
+				         <label>Project Name </label>
+				         <input type="text" class="form-control" id="name" name="name" required>
+				     </div>
+				     <div class="form-group">
+				          <label>Description </label>
+				         <textarea class="form-control" id="description" required rows="4" name="description" style="height: 140px !important"></textarea>
+				     </div>
+				     <div class="form-group">
+				         <label>Category </label>
+				         <select name="categoryList" class="form-control" id="categoryList" name="category" required>
+				         <option></option>
+				         </select>
+				     </div>
+				     <div class="form-group">
+				         <label>Document (PDF) </label>
+				         <input type="file" class="form-control" required>
+				     </div>
+
+				     
+				 </div>
+		    </div>
+		</div>
+      </div>
+        <div class="modal-footer">
+        	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			<input type="submit" class="btn btn-success" value="Send Request">
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- view modal -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" style="text-align: center;">Upload New Project 
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </h3>
+       
+      </div>
+       <form id="projectForm">
+      <div class="modal-body">
+        <div class="container">
+		    <div class="row">
+		          <div class="col-sm-6">
+				    
+				     <div class="form-group">
+				         <label>Project Name </label>
+				         <select  class="form-control" id="projectRequestsList" name="categoryUp" onchange="loadProject(this.value) " required>
+				         	<option></option>
+				         </select>
+				     </div>
+				     <div class="form-group">
+				          <label>Description </label>
+				         <textarea class="form-control" id="descriptionUp" required rows="4" name="descriptionUp" style="height: 140px !important"></textarea>
+				     </div>
+				     <div class="form-group">
+				         <label>Category </label>
+				         <select name="categoryList" class="form-control" id="categoryListUp" name="categoryUp" required>
+				         <option></option>
+				         </select>
+				     </div>
+				     <div class="form-group">
+				          <label>Price </label>
+				         <input type="text" class="form-control" id="priceUp" required  name="priceUp" />
+				     </div>
+				      <div class="form-group">
+				         <label>Project Image </label>
+				         <input type="file" id="projectImg" name="projectImg" class="form-control"  required>
+				     </div>
+				     <div class="form-group">
+				         <label>Document (Zip) </label>
+				         <input type="file" id="projectFile" name="projectFile" class="form-control"  required>
+				     </div>
+
+				     
+				 </div>
+		    </div>
+		</div>
+      </div>
+        <div class="modal-footer">
+        	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			<input type="submit" class="btn btn-success" value="Upload Project">
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer>
+
+</body>
+</html>
+
