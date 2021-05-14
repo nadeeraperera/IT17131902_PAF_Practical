@@ -65,28 +65,28 @@
   
 <div class="container text-center"> 
 <br/><br/>   
-  <div class="row">
-     <div class="col-sm-5 pull-right">
-         <div class=" sidebar" style="text-align: center">
-             <form id="imgForm">
-             <div class="form-group">
-                <h3 style="text-align: center" >My Profile</h3> 
-             </div>
-             <div class="form-group">
-                 <img id="imgPreview" alt="your image" class="profileImg" /><br/><br/>
-             </div>
-                 <input type="file" name="ProfImgfile" style="height:40px" id='ProfImgfile' class="form-control" />
-             <div class="form-group">
-                 <label id="ProfName"></label><br/>
-                 <span id="ProfType"></span>
-             </div>
-			  <div class="form-group">
-                 <input type="submit" class="btn btn-success"  value="Change Photo">
-             </div>
-             </form>
-             <div class="form-group">
-                 <input onclick="deleteProfile()" class="btn btn-default" value="Delete Profile">
-             </div>
+	<div class="row">
+		<div class="col-sm-5 pull-right">
+			<div class=" sidebar" style="text-align: center">
+				<form id="imgForm">
+					<div class="form-group">
+						<h3 style="text-align: center" >My Profile</h3> 
+					</div>
+					<div class="form-group">
+						<img id="imgPreview" alt="your image" class="profileImg" /><br/><br/>
+					</div>
+					<input type="file" name="ProfImgfile" style="height:40px" id='ProfImgfile' class="form-control" />
+					<div class="form-group">
+						<label id="ProfName"></label><br/>
+						<span id="ProfType"></span>
+					</div>
+					<div class="form-group">
+						<input type="submit" class="btn btn-success"  value="Change Photo">
+					</div>
+				</form>
+				<div class="form-group">
+					<input onclick="deleteProfile()" class="btn btn-default" value="Delete Profile">
+				</div>
              <br/></br/>
            
              
@@ -180,7 +180,7 @@
         var reader = new FileReader();
 
         reader.onload = function(e) {
-          $('#imgPreview').attr('src', e.target.result);
+          $('#imgPreview').attr('src', e.target.result); // preview images
         }
 
         reader.readAsDataURL(input.files[0]); // convert to base64 string
